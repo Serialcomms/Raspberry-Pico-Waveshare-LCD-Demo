@@ -19,10 +19,21 @@ The original demo works well with the Waveshare panel by simply changing the pin
 This demo extends the origial by adding functionality for the Joypad and buttons on the Waveshare panel.
 
 
-| Joypad     | Function              | 
-| -----------|---------------------- | 
-| `UP`       |  Static Image - Up    |   
-| `DOWN`     |  Static Image - Down  |   
-| `LEFT`     |  Static Image - Left  |    
+| Joypad     | Function              |
+| -----------|---------------------- |
+| `UP`       |  Static Image - Up    |
+| `DOWN`     |  Static Image - Down  |
+| `LEFT`     |  Static Image - Left  |
 | `RIGHT`    |  Static Image - Right |
-| `CENTRE`   |  (Re)Start Animation  |
+| `CENTRE`   |  (Re)Start Animation  | 
+
+| Keypad     | Function              |
+| -----------|---------------------- |
+| `A`        | Speed up / slow down  |
+| `B`        | Slow down / speed up  |
+| `X`        | Stop Animation        |
+| `Y`        | Animation Direction   |
+
+
+
+
