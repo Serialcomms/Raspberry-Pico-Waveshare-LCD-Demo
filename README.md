@@ -18,6 +18,9 @@ The original demo works well with the Waveshare panel by simply changing the pin
 
 This demo extends the origial by adding functionality for the Joypad and Buttons on the Waveshare panel.
 
+Panel initialisation has been simplified and modified for 90 Degree LCD orientation.
+
+
 <details><summary>Joypad Functions</summary>
 <p>
 
