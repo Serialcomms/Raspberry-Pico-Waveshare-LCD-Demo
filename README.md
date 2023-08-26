@@ -32,12 +32,19 @@ This demo extends the origial by adding functionality for the Joypad and buttons
 </p>
 </details>
 
+<details><summary>Keypad</summary>
+<p>
+
 | Keypad     | Function              |
 | -----------|---------------------- |
 | `A`        | Speed up / slow down  |
 | `B`        | Slow down / speed up  |
 | `X`        | Stop Animation        |
 | `Y`        | Animation Direction   |
+
+</p>
+</details>
+
 
 
 
