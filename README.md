@@ -9,11 +9,11 @@ The original demo works well with the Waveshare panel by simply changing the pin
 
 | Function   | Original Demo Pin | Waveshare Panel Pin |    
 | -----------|------------------ | --------------------|
-| `DC`       |                   |         8           |
-| `CS`       |                   |         9           |
-| `CLK`      |                   |         10          |
-| `DIN`      |                   |         11          |
-| `RESET`    |                   |         12          |
-| `BL`       |                   |         13          |
+| `DC`       |        3          |         8           |
+| `CS`       |        2          |         9           |
+| `CLK`      |        1          |         10          |
+| `DIN`      |        0          |         11          |
+| `RESET`    |        4          |         12          |
+| `BL`       |        5          |         13          |
 
 
