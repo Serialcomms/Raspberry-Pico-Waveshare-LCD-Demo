@@ -16,4 +16,6 @@ The original demo works well with the Waveshare panel by simply changing the pin
 | `RESET`    |        4          |         12          |
 | `BL`       |        5          |         13          |
 
+This demo extends the origial by adding functionality for the Joypad and buttons on the Waveshare panel.
+
 
