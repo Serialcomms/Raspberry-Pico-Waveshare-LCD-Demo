@@ -7,7 +7,7 @@ Modified version of [Raspberry Pico Example](https://github.com/raspberrypi/pico
 The original demo works well with the Waveshare panel by simply changing the pin definitions as shown
 
 
-| Function   | Original Demo Pin | Waveshare Panel Pin |    
+| Function   | Original Demo Pin | Waveshare Panel Pin | 
 | -----------|------------------ | --------------------|
 | `DC`       |        3          |         8           |
 | `CS`       |        2          |         9           |
@@ -19,3 +19,10 @@ The original demo works well with the Waveshare panel by simply changing the pin
 This demo extends the origial by adding functionality for the Joypad and buttons on the Waveshare panel.
 
 
+| Joypad     | Function              | 
+| -----------|---------------------- | 
+| `UP`       |  Static Image - Up    |   
+| `DOWN`     |  Static Image - Down  |   
+| `LEFT`     |  Static Image - Left  |    
+| `RIGHT`    |  Static Image - Right |
+| `CENTRE`   |  (Re)Start Animation  |
