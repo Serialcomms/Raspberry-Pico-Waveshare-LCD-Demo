@@ -6,7 +6,8 @@ Modified version of [Raspberry Pico Example](https://github.com/raspberrypi/pico
 
 The original demo works well with the Waveshare panel by simply changing the pin definitions as shown
 
-
+<details><summary>Pin Numbers</summary>
+<p>
 | Function   | Original Demo Pin | Waveshare Panel Pin | 
 | -----------|------------------ | --------------------|
 | `DC`       |        3          |         8           |
@@ -15,6 +16,9 @@ The original demo works well with the Waveshare panel by simply changing the pin
 | `DIN`      |        0          |         11          |
 | `RESET`    |        4          |         12          |
 | `BL`       |        5          |         13          |
+
+</p>
+</details>
 
 This demo extends the original by adding functionality for the Joypad and Buttons on the Waveshare panel.
 
