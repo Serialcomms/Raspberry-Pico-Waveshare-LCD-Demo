@@ -18,6 +18,8 @@ The original demo works well with the Waveshare panel by simply changing the pin
 
 This demo extends the origial by adding functionality for the Joypad and buttons on the Waveshare panel.
 
+<details><summary>Joypad</summary>
+<p>
 
 | Joypad     | Function              |
 | -----------|---------------------- |
@@ -26,6 +28,9 @@ This demo extends the origial by adding functionality for the Joypad and buttons
 | `LEFT`     |  Static Image - Left  |
 | `RIGHT`    |  Static Image - Right |
 | `CENTRE`   |  (Re)Start Animation  | 
+
+</p>
+</details>
 
 | Keypad     | Function              |
 | -----------|---------------------- |
