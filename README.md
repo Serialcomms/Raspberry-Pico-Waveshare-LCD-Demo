@@ -8,6 +8,7 @@ The original demo works well with the Waveshare panel by simply changing the pin
 
 <details><summary>Pin Numbers</summary>
 <p>
+  
 | Function   | Original Demo Pin | Waveshare Panel Pin | 
 | -----------|------------------ | --------------------|
 | `DC`       |        3          |         8           |
