@@ -7,10 +7,13 @@ Modified version of [Raspberry Pico Example](https://github.com/raspberrypi/pico
 The original demo works well with the Waveshare panel by simply changing the pin definitions 
 
 
-| Function   | Original Pin | Waveshare Panel                                                                                               |
-| -----------|------------- | ---------------------------------------|
-| `DC`       |              | Toggles debug messaging on/off                                                                                |
-| `CS`       |              | Set port debug messaging on                                                                                   |
-| `CLK`      |              | Set port debug messaging off                                                                                  |
+| Function   | Original Demo Pin | Waveshare Panel Pin |    
+| -----------|------------------ | --------------------|
+| `DC`       |                   |         8           |
+| `CS`       |                   |         9           |
+| `CLK`      |                   |         10          |
+| `DIN`      |                   |         11          |
+| `RESET`    |                   |         12          |
+| `BL`       |                   |         13          |
 
 
