@@ -3,7 +3,7 @@ Waveshare 240 x 240 LCD with Joypad + Buttons demo for Raspberry Pico
 
 <img src="Graphics/Pico-LCD-RP2040.png" alt="Waveshare LCD" title="Waveshare LCD" width="25%" height="25%">
 
-Modified version of [Raspberry Pico Example](https://github.com/raspberrypi/pico-examples/tree/master/pio/st7789_lcd) for
+Modified version of [Raspberry Pico SDK Example](https://github.com/raspberrypi/pico-examples/tree/master/pio/st7789_lcd) for
 Waveshare 1.3 Inch LCD panel [^1] with Joypad and 4 buttons.
 
 The original demo works well with the Waveshare LCD simply by changing the pin definitions as shown.
