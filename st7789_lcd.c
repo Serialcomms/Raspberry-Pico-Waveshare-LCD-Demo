@@ -188,6 +188,20 @@ static inline void panel_init()
     set_panel_gpio(JOY_LEFT);
     set_panel_gpio(JOY_RIGHT);
     set_panel_gpio(JOY_CENTRE);
+
+    gpio_init(PIN_BL);
+    gpio_init(PIN_CS);
+    gpio_init(PIN_DC);
+    gpio_init(PIN_RESET);
+   
+    gpio_set_dir(PIN_BL, GPIO_OUT);
+    gpio_set_dir(PIN_CS, GPIO_OUT);
+    gpio_set_dir(PIN_DC, GPIO_OUT);
+    gpio_set_dir(PIN_RESET, GPIO_OUT);
+    
+    gpio_put(PIN_BL, 1);
+    gpio_put(PIN_CS, 1);
+    gpio_put(PIN_RESET, 1);    
 }
 
 int main() {
@@ -202,19 +216,6 @@ int main() {
     
     panel_init();
 
-    gpio_init(PIN_BL);
-    gpio_init(PIN_CS);
-    gpio_init(PIN_DC);
-    gpio_init(PIN_RESET);
-   
-    gpio_set_dir(PIN_BL, GPIO_OUT);
-    gpio_set_dir(PIN_CS, GPIO_OUT);
-    gpio_set_dir(PIN_DC, GPIO_OUT);
-    gpio_set_dir(PIN_RESET, GPIO_OUT);
-    
-    gpio_put(PIN_BL, 1);
-    gpio_put(PIN_CS, 1);
-    gpio_put(PIN_RESET, 1);
     lcd_init(pio, sm, st7789_init_seq);
  
     // Lane 0 will be u coords (bits 8:1 of addr offset), lane 1 will be v
