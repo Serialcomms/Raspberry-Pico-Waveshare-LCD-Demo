@@ -10,6 +10,8 @@ The original demo works well with the Waveshare LCD simply by changing the pin d
 
 This demo extends the original by adding functionality for the Joypad and Buttons on the Waveshare panel.
 
+Panel initialisation has been simplified and modified for 90 Degree LCD orientation.
+
 <details><summary>LCD Display Pin Numbers</summary>
 <p>
   
@@ -24,11 +26,6 @@ This demo extends the original by adding functionality for the Joypad and Button
 
 </p>
 </details>
-
-
-
-Panel initialisation has been simplified and modified for 90 Degree LCD orientation.
-
 
 <details><summary>Joypad Pins and Functions</summary>
 <p>
