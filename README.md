@@ -26,7 +26,7 @@ This demo extends the original by adding functionality for the Joypad and Button
 Panel initialisation has been simplified and modified for 90 Degree LCD orientation.
 
 
-<details><summary>Joypad Functions</summary>
+<details><summary>Joypad Pins and Functions</summary>
 <p>
 
 | Pin | Joypad     | Function              |
