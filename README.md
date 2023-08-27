@@ -29,13 +29,13 @@ Panel initialisation has been simplified and modified for 90 Degree LCD orientat
 <details><summary>Joypad Functions</summary>
 <p>
 
-| Joypad     | Function              |
-|------------|-----------------------|
-| `UP`       |  Static Image - Up    |
-| `DOWN`     |  Static Image - Down  |
-| `LEFT`     |  Static Image - Left  |
-| `RIGHT`    |  Static Image - Right |
-| `CENTRE`   |  (Re)Start Animation  | 
+| Pin | Joypad     | Function              |
+|:---:|------------|-----------------------|
+|  2  | `UP`       |  Static Image - Up    |
+| 18  | `DOWN`     |  Static Image - Down  |
+| 16  | `LEFT`     |  Static Image - Left  |
+| 18  | `RIGHT`    |  Static Image - Right |
+| 23  | `CENTRE`   |  (Re)Start Animation  | 
 
 </p>
 </details>
