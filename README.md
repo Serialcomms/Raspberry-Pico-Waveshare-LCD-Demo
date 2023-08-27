@@ -10,7 +10,7 @@ The original demo works well with the Waveshare panel by simply changing the pin
 <p>
   
 | Function   | Original Demo Pin | Waveshare Panel Pin | 
-| -----------|------------------ | --------------------|
+| -----------|:-----------------:| :------------------:|
 | `DC`       |        3          |         8           |
 | `CS`       |        2          |         9           |
 | `CLK`      |        1          |         10          |
