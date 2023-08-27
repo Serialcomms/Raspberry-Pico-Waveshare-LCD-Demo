@@ -40,15 +40,15 @@ Panel initialisation has been simplified and modified for 90 Degree LCD orientat
 </p>
 </details>
 
-<details><summary>Keypad Functions</summary>
+<details><summary>Keypad Pins and Functions</summary>
 <p>
 
-| Keypad     | Function              |
-|:----------:|-----------------------|
-| `A`        | Speed up / slow down  |
-| `B`        | Slow down / speed up  |
-| `X`        | Stop Animation        |
-| `Y`        | Animation Direction   |
+| Pin | Keypad     | Function              |
+|:---:|:----------:|-----------------------|
+| 15  | `A`        | Speed up / slow down  |
+| 17  | `B`        | Slow down / speed up  |
+| 19  | `X`        | Stop Animation        |
+| 21  | `Y`        | Animation Direction   |
 
 </p>
 </details>
