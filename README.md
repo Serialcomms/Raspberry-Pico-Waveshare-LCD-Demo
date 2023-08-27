@@ -4,6 +4,8 @@
 Modified version of [Raspberry Pico Example](https://github.com/raspberrypi/pico-examples/tree/master/pio/st7789_lcd) for
 [Waveshare 1.3 Inch LCD panel](https://www.waveshare.com/wiki/Pico-LCD-1.3) with Joypad and 4 buttons.
 
+<img src="/Graphics/Pico-LCD-Rp2040.png" alt="Waveshare LCD" title="Waveshare LCD" width="50%" height="50%">
+
 The original demo works well with the Waveshare LCD simply by changing the pin definitions as shown
 
 <details><summary>LCD Display Pin Numbers</summary>
