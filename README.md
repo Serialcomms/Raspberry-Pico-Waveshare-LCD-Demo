@@ -10,7 +10,7 @@ The original demo works well with the Waveshare panel by simply changing the pin
 <p>
   
 | Function   | Original Demo Pin | Waveshare Panel Pin | 
-| -----------|:-----------------:| :------------------:|
+|------------|:-----------------:| :------------------:|
 | `DC`       |        3          |         8           |
 | `CS`       |        2          |         9           |
 | `CLK`      |        1          |         10          |
@@ -30,7 +30,7 @@ Panel initialisation has been simplified and modified for 90 Degree LCD orientat
 <p>
 
 | Joypad     | Function              |
-| -----------|---------------------- |
+|------------|-----------------------|
 | `UP`       |  Static Image - Up    |
 | `DOWN`     |  Static Image - Down  |
 | `LEFT`     |  Static Image - Left  |
@@ -44,7 +44,7 @@ Panel initialisation has been simplified and modified for 90 Degree LCD orientat
 <p>
 
 | Keypad     | Function              |
-| -----------|---------------------- |
+|:----------:|-----------------------|
 | `A`        | Speed up / slow down  |
 | `B`        | Slow down / speed up  |
 | `X`        | Stop Animation        |
