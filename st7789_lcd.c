@@ -76,15 +76,15 @@
 // Simplified initialisation using power-on / swreset default values, including CASET and RASET.
 
 static const uint8_t st7789_init_seq[] = {
-        1, 2, NOP,                                  // No Operation - 10mS power on delay
-        1, 2, SWRESET,                              // Software reset, 10mS stability delay
-        1, 2, SLPOUT,                               // Exit sleep mode, 10mS stability delay
-        2, 0, COLMOD, 0x55,                         // Set colour mode to 16 bits/pixel
-        2, 0, MADCTL, 0x70,                         // Set MADCTL for LCD 90 degree physical hardware orientation 
-        1, 0, INVON,                                // Colour inversion on (positive image with supplied data)
-        1, 0, DISPON,                               // Main screen display on
-        1, 1, NOP,                                  // No Operation - 5mS guard time 
-        0                                           // Terminate list
+        1, 2, NOP,                          // No Operation - 10mS power on delay
+        1, 2, SWRESET,                      // Software reset, 10mS stability delay
+        1, 2, SLPOUT,                       // Exit sleep mode, 10mS stability delay
+        2, 0, COLMOD, 0x55,                 // Set colour mode to 16 bits/pixel
+        2, 0, MADCTL, 0x70,                 // Set MADCTL for LCD 90 degree physical hardware orientation 
+        1, 0, INVON,                        // Colour inversion on (positive image with supplied data)
+        1, 0, DISPON,                       // Main screen display on
+        1, 1, NOP,                          // No Operation - 5mS guard time 
+        0                                   // Terminate list
 };
 
 static inline void lcd_set_dc_cs(bool dc, bool cs) {
