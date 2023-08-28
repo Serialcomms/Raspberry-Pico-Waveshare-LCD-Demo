@@ -289,7 +289,6 @@ int main() {
 
                 st7789_lcd_put(pio, sm, colour >> 8);
                 st7789_lcd_put(pio, sm, colour & 0xFF);
-
             }
         }
     }
