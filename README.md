@@ -12,6 +12,8 @@ This demo extends the original by adding functionality for the Joypad and Button
 
 Panel initialisation has been simplified and modified for 90 degree LCD screen orientation.
 
+Pico built-in LED toggles on/off every (theta_max / 12) degrees.
+
 <details><summary>LCD Display Pin Numbers</summary>
 <p>
   
