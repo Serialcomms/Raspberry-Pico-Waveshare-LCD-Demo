@@ -64,7 +64,6 @@
 #define COLMOD  0x3A        // Interface Pixel Format
 #define WRMEMC  0x3C        // Write Memory Continue
 #define WRDISBV 0x51        // Write Display Brightness
-#define PORCTRL 0xB2        // Porch Control
 
 #define SERIAL_CLK_DIV 1.f
 
@@ -76,15 +75,14 @@
 // Simplified initialisation using power-on / swreset default values, including CASET and RASET.
 
 static const uint8_t st7789_init_seq[] = {
-        1, 2, NOP,                          // No Operation - 10mS power on delay
-        1, 2, SWRESET,                      // Software reset, 10mS stability delay
-        1, 2, SLPOUT,                       // Exit sleep mode, 10mS stability delay
-        2, 0, COLMOD, 0x55,                 // Set colour mode to 16 bits/pixel
-        2, 0, MADCTL, 0x70,                 // Set MADCTL for LCD 90 degree physical hardware orientation 
-        1, 0, INVON,                        // Colour inversion on (positive image with supplied data)
-        1, 0, DISPON,                       // Main screen display on
-        1, 1, NOP,                          // No Operation - 5mS guard time 
-        0                                   // Terminate list
+        1, 2, NOP,                             // No Operation - 10mS power on delay
+        1, 2, SWRESET,                         // Software reset, 10mS stability delay
+        1, 2, SLPOUT,                          // Exit sleep mode, 10mS stability delay
+        2, 0, COLMOD, 0x55,                    // Set interface colour mode to 16 bits/pixel
+        2, 0, MADCTL, 0x70,                    // Set MADCTL for LCD 90° physical hardware orientation 
+        1, 0, INVON,                           // Colour inversion on (positive image with supplied data)
+        1, 1, DISPON,                          // Main screen display on, 5mS guard time
+        0                                      // Terminate initialisation command list
 };
 
 static inline void lcd_set_dc_cs(bool dc, bool cs) {
@@ -107,7 +105,7 @@ static inline void lcd_write_cmd(PIO pio, uint sm, const uint8_t *cmd, size_t co
     lcd_set_dc_cs(1, 1);
 }
 
-static inline void lcd_init(PIO pio, uint sm, const uint8_t *init_seq) {
+static inline void st7789_lcd_init(PIO pio, uint sm, const uint8_t *init_seq) {
     const uint8_t *cmd = init_seq;
     while (*cmd) {
         lcd_write_cmd(pio, sm, cmd + 2, *cmd);
@@ -128,10 +126,10 @@ static inline void set_panel_gpio(uint gpio_pin_number) {
     gpio_set_dir(gpio_pin_number, GPIO_IN);
 }
 
-static inline float get_theta(float theta, float theta_max, float theta_inc) {
+static inline float get_theta_rot(float theta_rot, float theta_max, float theta_inc) {
 
-    if(theta > theta_max)
-    return theta - theta_max;
+    if(theta_rot > theta_max)
+    return 0.00f;
 
     if(!gpio_get(JOY_UP))
     return theta_max * 0.00f;
@@ -148,7 +146,7 @@ static inline float get_theta(float theta, float theta_max, float theta_inc) {
     if(!gpio_get(JOY_CENTRE))
     return theta_max * 1.00f;
     
-    return theta + theta_inc;
+    return theta_rot + theta_inc;
 }
 
 static inline float get_theta_inc(float theta_inc) {
@@ -173,7 +171,21 @@ static inline float get_theta_inc(float theta_inc) {
     return theta_inc;
 }
 
-static inline void panel_init()
+static inline float get_theta_old(float theta_old, float theta_max, float theta_rot) {
+
+  if (fabs(theta_rot - theta_old) > theta_max / 12) {
+       
+            gpio_put(PICO_DEFAULT_LED_PIN,!gpio_get(PICO_DEFAULT_LED_PIN));   
+
+            return theta_rot; }
+
+        else
+            
+            return theta_old;  
+}
+
+
+static inline void st7789_panel_init()
 {
 
     // Waveshare 1.3 inch LCD Display Module, Joypad and 4 buttons
@@ -193,15 +205,18 @@ static inline void panel_init()
     gpio_init(PIN_CS);
     gpio_init(PIN_DC);
     gpio_init(PIN_RESET);
+    gpio_init(PICO_DEFAULT_LED_PIN);
    
     gpio_set_dir(PIN_BL, GPIO_OUT);
     gpio_set_dir(PIN_CS, GPIO_OUT);
     gpio_set_dir(PIN_DC, GPIO_OUT);
     gpio_set_dir(PIN_RESET, GPIO_OUT);
+    gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
     
     gpio_put(PIN_BL, 1);
     gpio_put(PIN_CS, 1);
-    gpio_put(PIN_RESET, 1);    
+    gpio_put(PIN_RESET, 1);
+    gpio_put(PICO_DEFAULT_LED_PIN,1);
 }
 
 int main() {
@@ -214,9 +229,9 @@ int main() {
 
     st7789_lcd_program_init(pio, sm, offset, PIN_DIN, PIN_CLK, SERIAL_CLK_DIV);
     
-    panel_init();
+    st7789_panel_init();
 
-    lcd_init(pio, sm, st7789_init_seq);
+    st7789_lcd_init(pio, sm, st7789_init_seq);
  
     // Lane 0 will be u coords (bits 8:1 of addr offset), lane 1 will be v
     // coords (bits 16:9 of addr offset), and we'll represent coords with
@@ -226,9 +241,9 @@ int main() {
     #define UNIT_LSB 16
     
     interp_config lane0_cfg = interp_default_config();
-    interp_config_set_shift(&lane0_cfg, UNIT_LSB - 1); // -1 because 2 bytes per pixel
+    interp_config_set_shift(&lane0_cfg, UNIT_LSB - 1);                      // -1 because 2 bytes per pixel
     interp_config_set_mask(&lane0_cfg, 1, 1 + (LOG_IMAGE_SIZE - 1));
-    interp_config_set_add_raw(&lane0_cfg, true); // Add full accumulator to base with each POP
+    interp_config_set_add_raw(&lane0_cfg, true);                            // Add full accumulator to base with each POP
     
     interp_config lane1_cfg = interp_default_config();
     interp_config_set_shift(&lane1_cfg, UNIT_LSB - (1 + LOG_IMAGE_SIZE));
@@ -240,33 +255,41 @@ int main() {
     
     interp0->base[2] = (uint32_t) raspberry_256x256;
 
-    float theta = 0.0f;
+    uint32_t colour;
+    int32_t theta_sin;
+    int32_t theta_cos;
+
+    float theta_rot = 0.0f;  
     float theta_inc = 0.0f;
     float theta_max = 2.0f * (float) M_PI;
+    float theta_old = theta_max + 1 ;
   
     while (1) {
 
         theta_inc = get_theta_inc(theta_inc);
+        theta_rot = get_theta_rot(theta_rot, theta_max, theta_inc);
+        theta_old = get_theta_old(theta_old, theta_max, theta_rot);
+ 
+        theta_sin = sinf(theta_rot) * (1 << UNIT_LSB);
+        theta_cos = cosf(theta_rot) * (1 << UNIT_LSB);
 
-        theta = get_theta(theta, theta_max, theta_inc);
-
-        int32_t rotate[4] = {
-                (int32_t) (cosf(theta) * (1 << UNIT_LSB)), (int32_t) (-sinf(theta) * (1 << UNIT_LSB)),
-                (int32_t) (sinf(theta) * (1 << UNIT_LSB)), (int32_t) (+cosf(theta) * (1 << UNIT_LSB))
-        };
-
-        interp0->base[0] = rotate[0] ;
-        interp0->base[1] = rotate[2] ;
+        interp0->base[0] = theta_cos;
+        interp0->base[1] = theta_sin;
 
         st7789_start_pixels(pio, sm);
         
         for (int y = 0; y < SCREEN_HEIGHT; ++y) {
-            interp0->accum[0] = rotate[1] * y;
-            interp0->accum[1] = rotate[3] * y;
+        
+            interp0->accum[0] = -theta_sin * y;
+            interp0->accum[1] = +theta_cos * y;
+
             for (int x = 0; x < SCREEN_WIDTH; ++x) {
-                uint16_t colour = *(uint16_t *) (interp0->pop[2]);
+
+                colour = *(uint16_t *) interp0->pop[2];
+
                 st7789_lcd_put(pio, sm, colour >> 8);
-                st7789_lcd_put(pio, sm, colour & 0xff);
+                st7789_lcd_put(pio, sm, colour & 0xFF);
+
             }
         }
     }
