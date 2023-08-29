@@ -14,6 +14,8 @@ Panel initialisation has been simplified and modified for 90 degree LCD screen o
 
 Pico built-in LED toggles on/off every (theta_max / 12) degrees.
 
+Click on Releases > Assets for pre-built .uf2 image.
+
 <details><summary>LCD Display Pin Numbers</summary>
 <p>
   
