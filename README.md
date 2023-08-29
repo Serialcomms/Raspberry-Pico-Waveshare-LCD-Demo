@@ -16,6 +16,8 @@ Pico built-in LED toggles on/off every (theta_max / 12) degrees.
 
 Click on Releases > Assets for pre-built .uf2 image.
 
+Start animation by clicking the joypad when centred.
+
 <details><summary>LCD Display Pin Numbers</summary>
 <p>
   
