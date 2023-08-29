@@ -14,7 +14,7 @@ Panel initialisation has been simplified and modified for 90 degree LCD screen o
 
 Pico built-in LED toggles on/off every (theta_max / 12) degrees rotation.
 
-Click on Releases > Assets for pre-built .uf2 image.
+Click on [Releases > Assets](https://github.com/Serialcomms/Raspberry-Pico-Waveshare-LCD-Demo/releases/tag/Pico) for pre-built .uf2 image.
 
 Start animation by clicking the Joypad when centred.
 
