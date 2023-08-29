@@ -8,7 +8,7 @@ Waveshare 1.3 Inch LCD panel [^1] with Joypad and 4 buttons.
 
 The original demo works well with the Waveshare LCD simply by changing the pin definitions as shown.
 
-This demo extends the original by adding functionality for the Joypad and four buttons on the Waveshare panel.
+This demo extends the original by adding functionality for the 5-way Joypad and 4 buttons on the Waveshare panel.
 
 Panel initialisation has been simplified and modified for 90 degree LCD screen orientation.
 
