@@ -173,13 +173,13 @@ static inline float get_theta_inc(float theta_inc) {
 
 static inline float get_theta_old(float theta_old, float theta_max, float theta_rot) {
 
-  if (fabs(theta_rot - theta_old) > theta_max / 12) {
+   if (fabs(theta_rot - theta_old) > theta_max / 12) {
        
       gpio_put(PICO_DEFAULT_LED_PIN,!gpio_get(PICO_DEFAULT_LED_PIN));   
 
       return theta_rot; }
 
-  else
+   else
             
       return theta_old;  
 }
