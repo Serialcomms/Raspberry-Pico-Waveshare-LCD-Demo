@@ -83,7 +83,7 @@ static const uint8_t st7789_init_seq[] = {
         1, 0, INVON,                           // Colour inversion on (positive image with supplied data)
         1, 1, DISPON,                          // Main screen display on, 5mS guard time
         0                                      // Terminate initialisation command list
-}
+} ;
 
 static inline void lcd_set_dc_cs(bool dc, bool cs) {
     sleep_us(1);
